@@ -1,0 +1,144 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>空气污染指数AQI简介</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href="css/blue.css" rel="stylesheet" type="text/css" media="all" />
+    <!----font-Awesome----->
+    <link rel="stylesheet" href="fonts/css/font-awesome.min.css">
+    <!----font-Awesome----->
+    <!-- start plugins -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- Owl Carousel Assets -->
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <script src="js/owl.carousel.js"></script>
+    <script>
+				$(document).ready(function() {
+
+					$("#owl-demo").owlCarousel({
+						items : 4,
+						lazyLoad : true,
+						autoPlay : true,
+						navigation : true,
+						navigationText : ["", ""],
+						rewindNav : false,
+						scrollPerPage : false,
+						pagination : false,
+						paginationNumbers : false,
+					});
+
+				});
+    </script>
+    <!-- //Owl Carousel Assets -->
+    <!-- start circle -->
+    <script src="echarts-all.js"></script>>
+</head>
+<body>
+    <div class="header_bg">
+        <div class="container">
+            <div class="header">
+                <div class="h_menu">
+                    <a id="touch-menu" class="mobile-menu" href="#">目录 / Menu</a>
+                    <nav>
+                        <ul class="menu list-unstyled">
+                                <div class="logo">
+                                        <a href="">
+                                            <img src="images/logo.png" alt="" style="width: 64px;"/>
+                                        </a>
+                                    </div>
+                            <li><a href="index.html">主页 / Homepage</a></li>
+                            <li><a href="data.html">数据 / Data</a></li>
+                            <li>
+                                <a href="AQ_analysis.html">空气质量污染物分析 / Analysis</a>
+                                <ul class="sub-menu list-unstyled">
+                                    <li><a href="AQI.html">空气污染指数AQI简介</a></li>
+                                    <li><a href="concurrent_pollutants.html">并发污染物分析</a></li>
+                                    <li><a href="primary_pollutant.html">首要污染物分析</a></li>
+                                    <li><a href="peak_hours.html">污染物浓度高峰时段分析</a></li>
+                                    <li><a href="peak_season.html">污染物浓度高峰季节分析</a></li>
+                                    <li><a href="event_mining.html">污染物事件挖掘</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="AQ_pre.html">空气质量预测 / Prediction</a>
+                                <ul class="sub-menu list-unstyled">
+                                    <li><a href="pre_relation.html">时序关系挖掘</a></li>
+                                    <li><a href="pre_model.html">预测模型</a></li>
+                                    <li><a href="pre_theory.html">预测理论依据</a></li>
+                                    <li><a href="pre_end.html">预测结果应用</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="about.html">关于 / About</a></li>
+                        </ul>
+                    </nav>
+                    <script src="js/menu.js" type="text/javascript"></script>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="main_btm1">
+        <!-- start main_btm -->
+        <div class="container">
+            <h1>空气污染指数AQI简介</h1>
+
+
+           <div><center><img src="images/w1.jpg" style="width:50%;"></center></div>
+            <h3>1、AQI到底是啥？</h3>
+            <p>　　空气质量指数（Air Quality Index，简称AQI），简单来说就是能够对空气质量进行定量描述的数据。要知道世界各国的空气质量是有很大区别的，我们和雾霾斗争的同时，北欧人民正在享受蓝天白云。因此各国的空气质量标准也是大不相同，AQI的取值范围自然也不同。目前我国采用的标准和美国标准相似，其取值范围在0-500之间。</p>
+            <div><center><img src="images/w2.jpg" style="width:50%;"></center></div>
+            <p>　　PM2.5可以说是目前最为大众熟知的空气污染物，然而环境中存在的污染物并不只有PM2.5，常见的还有二氧化硫、二氧化氮、一氧化碳、臭氧和悬浮颗粒物（包括PM2.5和PM10），这也是目前环保监测部门每天的空气质量报告中包含的几种主要污染物。由于近几年雾霾持续发展，污染越来越严重，在2016年1月正式实施的GB 3095-2012《环境空气质量标准》中，新增了对PM2.5的监测要求并规定了浓度限值。</p>
+            <div><center><img src="images/w3.jpg" style="width:50%;"></center></div>
+            <p>　　那么问题来了，环境监测部门每天公布这么多不同污染物的浓度，我们究竟如何才能确定当前空气质量呢？为了解决这个问题，一个综合的量化数值——空气质量指数（AQI）便应运而生。简单地说，它是将几种主要污染物各自的含量折算成一个统一的指数，以反映当前空气质量，类似数学中加权平均数的算法。</p>
+            <p>　　标准的制定者为空气质量指数规定了几大区间，在不同的区间内，就代表不同的空气质量水平；且为了便于区分，每个区间都有与之对应的颜色，让人一目了然。</p>
+            <div><center><img src="images/w4.jpg" style="width:50%;"></center></div>
+            <p>　　有了上面这张表，我们就可以根据环保部门每天发布的空气质量指数对号入座，轻松判断当前空气质量水平，并采取相应措施。</p>
+            <h3>2、它是怎么算出来的？</h3>
+            <p>　　这一数据究竟是如何算出来的呢？</p>
+            <p>　　先给各位一个公式感受下：</p>
+            <div><center><img src="images/w5.jpg" style="width:50%;"></center></div>
+            <p>　　公式中各个字母的含义如下：</p>
+            <p>　　I：空气质量指数AQI</p>
+            <p>　　C：污染物浓度</p>
+            <p>　　Clow：小于或等于C的浓度限值</p>
+            <p>　　Chigh：大于或等于C的浓度限值</p>
+            <p>　　Ilow：与Clow相对应的指数限值</p>
+            <p>　　Ihigh：与Chigh相对应的指数限值</p>
+            <p>　　其中后面四个数值均为常量，只需根据污染物的种类查询并代入即可，因此整个公式中起决定性作用的就是当前的污染物浓度C。只要知道了当前的污染物浓度，即可得出当前空气质量指数AQI。</p>
+            <p>　　以常见的PM2.5为例，美国环保局对其限值如下：</p>
+            <div><center><img src="images/w6.jpg" style="width:50%;"></center></div>
+            <p>　　北京时间4月17日晚，雾霾已经被风吹的差不多散尽了，当时的PM2.5浓度约为43μg/m3。</p>
+            <div><center><img src="images/w7.jpg" style="width:50%;"></center></div>
+            <p>　　在浓度限值表中可以查询对应的浓度限值分别为35.5和55.4，那么我们的四个常量就已经确定了：</p>
+            <p>　　Clow=35.5，Chigh=55.4；Ilow=101，Ihigh=150</p>
+            <p>　　代入公式计算得出当时的AQI约为120，当时北京市环境监测总站公布数据为124，几乎相同。</p>
+            <div><center><img src="images/w8.jpg" style="width:50%;"></center></div>
+            <p>　　当然，这只是针对PM2.5的AQI，真正的空气质量指数是要分别计算出空气中主要污染物的AQI，并取其中的最大值。说出来你可能不信，大部分时间里，北京的PM2.5 AQI就是最终的AQI，也就是我们经常听到的首要污染物。。。扎心了，老铁</p>
+
+
+        </div>
+        <div class="footer1_bg">
+            <!-- start footer1 -->
+            <div class="container">
+                <div class="footer1">
+                    <div class="copy pull-left">
+                        <p class="link">Designed By Ruijie Xi And Tingxuan Xie. Contact us<a target="_blank" href="about.html"></a></p>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <script src="js/d3.js"></script>
+        <script src="js/esl.js"></script>
+        <script src="js/echarts-plain-map.js"></script>
+        <script src="js/feature/heat_p.js"></script>
+</body>
+</html>

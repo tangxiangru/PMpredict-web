@@ -1,0 +1,229 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>污染物高峰时段分析</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript">
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <link href="css/blue.css" rel="stylesheet" type="text/css" media="all" />
+    <!----font-Awesome----->
+    <link rel="stylesheet" href="fonts/css/font-awesome.min.css">
+    <!----font-Awesome----->
+    <!-- start plugins -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- Owl Carousel Assets -->
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <script src="js/owl.carousel.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#owl-demo").owlCarousel({
+                items: 4,
+                lazyLoad: true,
+                autoPlay: true,
+                navigation: true,
+                navigationText: ["", ""],
+                rewindNav: false,
+                scrollPerPage: false,
+                pagination: false,
+                paginationNumbers: false,
+            });
+
+        });
+    </script>
+    <!-- //Owl Carousel Assets -->
+    <!-- start circle -->
+    <script src="echarts-all.js"></script>>
+</head>
+
+<body>
+    <div class="header_bg">
+        <div class="container">
+            <div class="header">
+                <div class="h_menu">
+                    <a id="touch-menu" class="mobile-menu" href="#">目录 / Menu</a>
+                    <nav>
+                        <ul class="menu list-unstyled">
+                                <div class="logo">
+                                        <a href="">
+                                            <img src="images/logo.png" alt="" style="width: 64px;"/>
+                                        </a>
+                                    </div>
+                            <li>
+                                <a href="index.html">主页 / Homepage</a>
+                            </li>
+                            <li>
+                                <a href="data.html">数据 / Data</a>
+                            </li>
+                            <li>
+                                <a href="AQ_analysis.html">空气质量污染物分析 / Analysis</a>
+                                <ul class="sub-menu list-unstyled">
+                                    <li>
+                                        <a href="AQI.html">空气污染指数AQI简介</a>
+                                    </li>
+                                    <li>
+                                        <a href="concurrent_pollutants.html">并发污染物分析</a>
+                                    </li>
+                                    <li>
+                                        <a href="primary_pollutant.html">首要污染物分析</a>
+                                    </li>
+                                    <li>
+                                        <a href="peak_hours.html">污染物浓度高峰时段分析</a>
+                                    </li>
+                                    <li>
+                                        <a href="peak_season.html">污染物浓度高峰季节分析</a>
+                                    </li>
+                                    <li>
+                                        <a href="event_mining.html">污染物事件挖掘</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="AQ_pre.html">空气质量预测 / Prediction</a>
+                                <ul class="sub-menu list-unstyled">
+                                    <li>
+                                        <a href="pre_relation.html">时序关系挖掘</a>
+                                    </li>
+                                    <li>
+                                        <a href="pre_model.html">预测模型</a>
+                                    </li>
+                                    <li>
+                                        <a href="pre_theory.html">预测理论依据</a>
+                                    </li>
+                                    <li>
+                                        <a href="pre_end.html">预测结果应用</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="about.html">关于 / About</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <script src="js/menu.js" type="text/javascript"></script>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="main_bg">
+        <!-- start main -->
+        <div>
+            <h1>污染物高峰时段分析</h1>
+        </div>
+        <br/>
+        <div class="clearfix"></div>
+        <div id="temper1main" style="width:1300px;height:400px;margin-left:auto;margin-right:auto;"></div>
+        <script type="text/javascript">
+            // 基于准备好的dom，初始化echarts实例
+            var mytemper1Chart = echarts.init(document.getElementById('temper1main'));
+            var option = {
+                title: {
+                    text: '污染物浓度高峰时段分析'
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data: ['4月3日', '4月4日', '4月5日']
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                toolbox: {
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['2017/4/3 0:00', '2017/4/3 1:00', '2017/4/3 2:00', '2017/4/3 3:00', '2017/4/3 4:00',
+                        '2017/4/3 5:00', '2017/4/3 6:00', '2017/4/3 7:00', '2017/4/3 8:00', '2017/4/3 9:00',
+                        '2017/4/3 10:00', '2017/4/3 11:00', '2017/4/3 12:00', '2017/4/3 13:00',
+                        '2017/4/3 14:00', '2017/4/3 15:00', '2017/4/3 16:00', '2017/4/3 17:00',
+                        '2017/4/3 18:00', '2017/4/3 19:00', '2017/4/3 20:00', '2017/4/3 21:00',
+                        '2017/4/3 22:00', '2017/4/3 23:00'
+                    ]
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [
+
+                    {
+                        name: '4月3日',
+                        type: 'line',
+                        stack: '总量',
+                        data: [79, 79, 81, 128, 192, 186, 165, 157, 143, 73, 61, 67, 69, 86, 133, 139, 138, 138,
+                            134, 134, 144, 152, 160, 155
+                        ]
+                    },
+                    {
+                        name: '4月4日',
+                        type: 'line',
+                        stack: '总量',
+                        data: [158, 158, 171, 176, 171, 165, 173, 176, 184, 189, 137, 124, 72, 27, 27, 30, 33,
+                            39, 41, 44, 48, 55, 58, 69
+                        ]
+                    },
+                    {
+                        name: '4月5日',
+                        type: 'line',
+                        stack: '总量',
+                        data: [74, 75, 65, 54, 57, 67, 74, 88, 86, 84, 74, 71, 78, 73, 67, 64, 63, 67, 60, 61,
+                            63, 67, 68, 78
+                        ]
+                    },
+
+                ]
+            };
+            mytemper1Chart.setOption(option, true);
+        </script>
+        <div>
+            <div class="clearfix"></div>
+
+            <h6>
+                该图展示了大兴监测站PM2.5在4月1日、4月2日、4月3日3天的浓度变化。我们可以看出在这一天中4:00-8:00的PM2.5含量是最高的；12:00-14:00的含量相对较低。说明一天中凌晨的空气质量较差，而正午的空气质量较好。每个站点不同季节的污染物高峰时段可能略微有所差别，但是我们可以通过前几日的真实污染物浓度数据和我们提供的预测结果大致判断出未来某天或几天的污染物高峰时段，通过减少出行、戴口罩等方式进行预防。
+            </h6>
+        </div>
+        <div class="clearfix"></div>
+        <div class="footer1_bg">
+            <!-- start footer1 -->
+            <div class="container">
+                <div class="footer1">
+                    <div class="copy pull-left">
+                        <p class="link">Designed By Ruijie Xi And Tingxuan Xie. Contact us
+                            <a target="_blank" href="about.html"></a>
+                        </p>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/d3.js"></script>
+        <script src="js/esl.js"></script>
+        <script src="js/echarts-plain-map.js"></script>
+        <script src="js/feature/heat_p.js"></script>
+</body>
+
+</html>

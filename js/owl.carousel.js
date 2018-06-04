@@ -1407,11 +1407,11 @@ if ( typeof Object.create !== "function" ) {
 
 	$.fn.owlCarousel.options = {
 
-		items : 1,
+		items : 5,
 		itemsCustom : false,
-		itemsDesktop : [1199,1],
-		itemsDesktopSmall : [979,1],
-		itemsTablet : [768,1],
+		itemsDesktop : [1199,4],
+		itemsDesktopSmall : [979,3],
+		itemsTablet : [768,2],
 		itemsTabletSmall : false,
 		itemsMobile : [479,1],
 		singleItem : false,

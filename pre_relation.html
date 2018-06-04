@@ -1,0 +1,581 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>联系我们</title>
+    <!-- Bootstrap -->
+    <script src="echarts-all.js"></script>
+    <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript">
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <link href="css/blue.css" rel="stylesheet" type="text/css" media="all" />
+    <!----font-Awesome----->
+    <link rel="stylesheet" href="fonts/css/font-awesome.min.css">
+    <!----font-Awesome----->
+    <!-- start plugins -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script src="js/menu.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="header_bg">
+        <div class="container">
+            <div class="header">
+                <div class="h_menu">
+                    <a id="touch-menu" class="mobile-menu" href="#">目录 / Menu</a>
+                    <nav>
+                        <ul class="menu list-unstyled">
+                                <div class="logo">
+                                        <a href="">
+                                            <img src="images/logo.png" alt="" style="width: 64px;"/>
+                                        </a>
+                                    </div>
+                            <li>
+                                <a href="index.html">主页 / Homepage</a>
+                            </li>
+                            <li>
+                                <a href="data.html">数据 / Data</a>
+                            </li>
+                            <li>
+                                <a href="AQ_analysis.html">空气质量污染物分析 / Analysis</a>
+                                <ul class="sub-menu list-unstyled">
+                                    <li>
+                                        <a href="AQI.html">空气污染指数AQI简介</a>
+                                    </li>
+                                    <li>
+                                        <a href="concurrent_pollutants.html">并发污染物分析</a>
+                                    </li>
+                                    <li>
+                                        <a href="primary_pollutant.html">首要污染物分析</a>
+                                    </li>
+                                    <li>
+                                        <a href="peak_hours.html">污染物浓度高峰时段分析</a>
+                                    </li>
+                                    <li>
+                                        <a href="peak_season.html">污染物浓度高峰季节分析</a>
+                                    </li>
+                                    <li>
+                                        <a href="event_mining.html">污染物事件挖掘</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="AQ_pre.html">空气质量预测 / Prediction</a>
+                                <ul class="sub-menu list-unstyled">
+                                    <li>
+                                        <a href="pre_relation.html">时序关系挖掘</a>
+                                    </li>
+                                    <li>
+                                        <a href="pre_model.html">预测模型</a>
+                                    </li>
+                                    <li>
+                                        <a href="pre_theory.html">预测理论依据</a>
+                                    </li>
+                                    <li>
+                                        <a href="pre_end.html">预测结果应用</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="about.html">关于 / About</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <script src="js/menu.js" type="text/javascript"></script>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="main_bg">
+        <!-- start main -->
+        <div class="container">
+
+        </div>
+    </div>
+    <div class="main_btm1">
+        <!-- start main_btm -->
+        <div>
+            <img src="images/5.png" style="width:100%;margin-left:auto;margin-right:auto;">
+        </div>
+        <br/>
+        <h1>title1111111111111111</h1>
+        <div id="temper2main" style="width:1250px;height:400px;margin-left:auto;margin-right:auto;"></div>
+        <h6>22222222222</h6>
+        <h1>title1111111111111111</h1>
+        <div id="temper3main" style="width:1250px;height:400px;margin-left:auto;margin-right:auto;"></div>
+        <h6>22222222222</h6>
+        <h1>title1111111111111111</h1>
+        <div id="temper4main" style="width:1250px;height:400px;margin-left:auto;margin-right:auto;"></div>
+        <h6>22222222222</h6>
+
+        <script type="text/javascript">
+            // 基于准备好的dom，初始化echarts实例
+
+
+            // 基于准备好的dom，初始化echarts实例
+            var mytemper2Chart = echarts.init(document.getElementById('temper2main'));
+            var option = {
+                title: {
+                    text: '气温(扩大50倍)对AQI的影响',
+                    //subtext: '纯属虚构'
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data: ['日均气温', 'AQI']
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        mark: {
+                            show: true
+                        },
+                        dataView: {
+                            show: true,
+                            readOnly: false
+                        },
+                        magicType: {
+                            show: true,
+                            type: ['line', 'bar']
+                        },
+                        restore: {
+                            show: true
+                        },
+                        saveAsImage: {
+                            show: true
+                        }
+                    }
+                },
+                calculable: true,
+                xAxis: [{
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['2017/3/1', '2017/3/2', '2017/3/3', '2017/3/4', '2017/3/5', '2017/3/6',
+                        '2017/3/7', '2017/3/8', '2017/3/9', '2017/3/10', '2017/3/11', '2017/3/12',
+                        '2017/3/13', '2017/3/14', '2017/3/15', '2017/3/16', '2017/3/17', '2017/3/18',
+                        '2017/3/19', '2017/3/20', '2017/3/21', '2017/3/22', '2017/3/23', '2017/3/24',
+                        '2017/3/25', '2017/3/26', '2017/3/27', '2017/3/28', '2017/3/29', '2017/3/30',
+                        '2017/3/31'
+                    ]
+                }],
+                yAxis: [{
+                    type: 'value',
+                    axisLabel: {
+                        formatter: '{value} '
+                    }
+                }],
+                series: [{
+                        name: '日均气温/50',
+                        type: 'line',
+                        data: [250, -15, -55, -65, 40, -75, -5, -155, 125, 55, 355, 400, 50, 370, 40, 130, 245,
+                            160, 310, 355, 235, 110, 265, 55, 45, 150, 215, 145, 260, 355, 265, 250, -15, -
+                            55, -65, 40, -75, -5, -155, 125, 55, 355, 400, 50, 370, 40, 130, 245, 160, 310
+                        ],
+
+                        markPoint: {
+                            data: [{
+                                    type: 'max',
+                                    name: '最大值'
+                                },
+                                {
+                                    type: 'min',
+                                    name: '最小值'
+                                }
+                            ]
+                        },
+                        markLine: {
+                            data: [{
+                                type: 'average',
+                                name: '平均值'
+                            }]
+                        }
+                    },
+                    {
+                        name: 'AQI',
+                        type: 'line',
+                        data: [52.83333333, 83.75, 108.28125, 113.0208333, 50.875, 51.5, 33.40909091,
+                            40.54347826, 75.72916667, 81.73076923, 82.7, 29.875, 35, 90.9375, 117.25,
+                            125.1388889, 202.3809524, 221.5555556, 244.6666667, 123.75, 133.2291667,
+                            199.3827918, 117.173913, 77.94117647, 45.6875, 46.04166667, 70.88541667,
+                            83.41152054, 147.0652174, 90.70789459, 58.74956126
+                        ],
+                        markPoint: {
+                            data: [{
+                                name: '周最低',
+                                value: -2,
+                                xAxis: 1,
+                                yAxis: -1.5
+                            }]
+                        },
+                        markLine: {
+                            data: [{
+                                type: 'average',
+                                name: '平均值'
+                            }]
+
+                        }
+                    }
+                ]
+            };
+
+
+            mytemper2Chart.setOption(option, true);
+
+
+
+
+            var mytemper3Chart = echarts.init(document.getElementById('temper3main'));
+            var option = {
+                title: {
+                    text: '湿度对AQI的影响',
+                    //subtext: '纯属虚构'
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data: ['日均湿度', 'AQI']
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        mark: {
+                            show: true
+                        },
+                        dataView: {
+                            show: true,
+                            readOnly: false
+                        },
+                        magicType: {
+                            show: true,
+                            type: ['line', 'bar']
+                        },
+                        restore: {
+                            show: true
+                        },
+                        saveAsImage: {
+                            show: true
+                        }
+                    }
+                },
+                calculable: true,
+                xAxis: [{
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['2017/3/1', '2017/3/2', '2017/3/3', '2017/3/4', '2017/3/5', '2017/3/6',
+                        '2017/3/7', '2017/3/8', '2017/3/9', '2017/3/10', '2017/3/11', '2017/3/12',
+                        '2017/3/13', '2017/3/14', '2017/3/15', '2017/3/16', '2017/3/17', '2017/3/18',
+                        '2017/3/19', '2017/3/20', '2017/3/21', '2017/3/22', '2017/3/23', '2017/3/24',
+                        '2017/3/25', '2017/3/26', '2017/3/27', '2017/3/28', '2017/3/29', '2017/3/30',
+                        '2017/3/31'
+                    ]
+                }],
+                yAxis: [{
+                    type: 'value',
+                    axisLabel: {
+                        formatter: '{value} '
+                    }
+                }],
+                series: [{
+                        name: '日均湿度/50',
+                        type: 'line',
+                        data: [17.83333333, 36.84375, 39.675, 33.25, 27.58333333, 24.20833333, 23.77272727,
+                            16.13043478, 22.58333333, 18.30769231, 23.2, 16.875, 12.75, 44.625, 35.8,
+                            42.38888889, 65.04761905, 48.27777778, 57.2, 66.5, 55.04166667, 60.86956522,
+                            80.82608696, 94.52941176, 41.65, 37.625, 33, 51.38888889, 52.43478261, 45.25,
+                            31.875
+                        ],
+
+                        markPoint: {
+                            data: [{
+                                    type: 'max',
+                                    name: '最大值'
+                                },
+                                {
+                                    type: 'min',
+                                    name: '最小值'
+                                }
+                            ]
+                        },
+                        markLine: {
+                            data: [{
+                                type: 'average',
+                                name: '平均值'
+                            }]
+                        }
+                    },
+                    {
+                        name: 'AQI',
+                        type: 'line',
+                        data: [52.83333333, 83.75, 108.28125, 113.0208333, 50.875, 51.5, 33.40909091,
+                            40.54347826, 75.72916667, 81.73076923, 82.7, 29.875, 35, 90.9375, 117.25,
+                            125.1388889, 202.3809524, 221.5555556, 244.6666667, 123.75, 133.2291667,
+                            199.3827918, 117.173913, 77.94117647, 45.6875, 46.04166667, 70.88541667,
+                            83.41152054, 147.0652174, 90.70789459, 58.74956126
+                        ],
+                        markPoint: {
+                            data: [{
+                                name: '周最低',
+                                value: -2,
+                                xAxis: 1,
+                                yAxis: -1.5
+                            }]
+                        },
+                        markLine: {
+                            data: [{
+                                type: 'average',
+                                name: '平均值'
+                            }]
+                        }
+                    }
+                ]
+            };
+            mytemper3Chart.setOption(option, true);
+
+
+
+            var mytemper4Chart = echarts.init(document.getElementById('temper4main'));
+            var option = {
+                title: {
+                    text: '气压对AQI的影响',
+                    //subtext: '纯属虚构'
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data: ['日均气压', 'AQI']
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        mark: {
+                            show: true
+                        },
+                        dataView: {
+                            show: true,
+                            readOnly: false
+                        },
+                        magicType: {
+                            show: true,
+                            type: ['line', 'bar']
+                        },
+                        restore: {
+                            show: true
+                        },
+                        saveAsImage: {
+                            show: true
+                        }
+                    }
+                },
+                calculable: true,
+                xAxis: [{
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['2017/3/1', '2017/3/2', '2017/3/3', '2017/3/4', '2017/3/5', '2017/3/6',
+                        '2017/3/7', '2017/3/8', '2017/3/9', '2017/3/10', '2017/3/11', '2017/3/12',
+                        '2017/3/13', '2017/3/14', '2017/3/15', '2017/3/16', '2017/3/17', '2017/3/18',
+                        '2017/3/19', '2017/3/20', '2017/3/21', '2017/3/22', '2017/3/23', '2017/3/24',
+                        '2017/3/25', '2017/3/26', '2017/3/27', '2017/3/28', '2017/3/29', '2017/3/30',
+                        '2017/3/31'
+                    ]
+                }],
+                yAxis: [{
+                    type: 'value',
+                    axisLabel: {
+                        formatter: '{value} '
+                    }
+                }],
+                series: [{
+                        name: '日均气压',
+                        type: 'line',
+                        data: [1020.65, 1020.65, 1020.65, 1020.65, 1020.65, 1020.65, 1020.65, 1020.65, 1020.65,
+                            1020.65, 1020.65, 1020.65, 1020.65, 1020.65, 1020.65, 1020.65, 1020.65, 1020.65,
+                            1020.65, 1020.65, 1020.65, 1020.65, 1020.65, 1020.65, 1020.65, 1020.65, 1020.65,
+                            1020.65, 1020.65, 1020.65, 1020.65
+                        ],
+
+                        markPoint: {
+                            data: [{
+                                    type: 'max',
+                                    name: '最大值'
+                                },
+                                {
+                                    type: 'min',
+                                    name: '最小值'
+                                }
+                            ]
+                        },
+                        markLine: {
+                            data: [{
+                                type: 'average',
+                                name: '平均值'
+                            }]
+                        }
+                    },
+                    {
+                        name: 'AQI',
+                        type: 'line',
+                        data: [52.83333333, 83.75, 108.28125, 113.0208333, 50.875, 51.5, 33.40909091,
+                            40.54347826, 75.72916667, 81.73076923, 82.7, 29.875, 35, 90.9375, 117.25,
+                            125.1388889, 202.3809524, 221.5555556, 244.6666667, 123.75, 133.2291667,
+                            199.3827918, 117.173913, 77.94117647, 45.6875, 46.04166667, 70.88541667,
+                            83.41152054, 147.0652174, 90.70789459, 58.74956126
+                        ],
+                        markPoint: {
+                            data: [{
+                                name: '周最低',
+                                value: -2,
+                                xAxis: 1,
+                                yAxis: -1.5
+                            }]
+                        },
+                        markLine: {
+                            data: [{
+                                type: 'average',
+                                name: '平均值'
+                            }]
+                        }
+                    }
+                ]
+            };
+            mytemper4Chart.setOption(option, true);
+
+
+            var myO2Chart = echarts.init(document.getElementById('O2main'));
+            var option = {
+                title: {
+                    text: '气温对AQI的影响',
+                    //subtext: '纯属虚构'
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data: ['日均气温', 'AQI']
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        mark: {
+                            show: true
+                        },
+                        dataView: {
+                            show: true,
+                            readOnly: false
+                        },
+                        magicType: {
+                            show: true,
+                            type: ['line', 'bar']
+                        },
+                        restore: {
+                            show: true
+                        },
+                        saveAsImage: {
+                            show: true
+                        }
+                    }
+                },
+                calculable: true,
+                xAxis: [{
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['2017/3/1', '2017/3/2', '2017/3/3', '2017/3/4', '2017/3/5', '2017/3/6',
+                        '2017/3/7', '2017/3/8', '2017/3/9', '2017/3/10', '2017/3/11', '2017/3/12',
+                        '2017/3/13', '2017/3/14', '2017/3/15', '2017/3/16', '2017/3/17', '2017/3/18',
+                        '2017/3/19', '2017/3/20', '2017/3/21', '2017/3/22', '2017/3/23', '2017/3/24',
+                        '2017/3/25', '2017/3/26', '2017/3/27', '2017/3/28', '2017/3/29', '2017/3/30',
+                        '2017/3/31'
+                    ]
+                }],
+                yAxis: [{
+                    type: 'value',
+                    axisLabel: {
+                        formatter: '{value} '
+                    }
+                }],
+                series: [{
+                        name: '日均气温/50',
+                        type: 'line',
+                        data: [250, -15, -55, -65, 40, -75, -5, -155, 125, 55, 355, 400, 50, 370, 40, 130, 245,
+                            160, 310, 355, 235, 110, 265, 55, 45, 150, 215, 145, 260, 355, 265, 250, -15, -
+                            55, -65, 40, -75, -5, -155, 125, 55, 355, 400, 50, 370, 40, 130, 245, 160, 310
+                        ],
+
+                        markPoint: {
+                            data: [{
+                                    type: 'max',
+                                    name: '最大值'
+                                },
+                                {
+                                    type: 'min',
+                                    name: '最小值'
+                                }
+                            ]
+                        },
+                        markLine: {
+                            data: [{
+                                type: 'average',
+                                name: '平均值'
+                            }]
+                        }
+                    },
+                    {
+                        name: 'AQI',
+                        type: 'line',
+                        data: [52.83333333, 83.75, 108.28125, 113.0208333, 50.875, 51.5, 33.40909091,
+                            40.54347826, 75.72916667, 81.73076923, 82.7, 29.875, 35, 90.9375, 117.25,
+                            125.1388889, 202.3809524, 221.5555556, 244.6666667, 123.75, 133.2291667,
+                            199.3827918, 117.173913, 77.94117647, 45.6875, 46.04166667, 70.88541667,
+                            83.41152054, 147.0652174, 90.70789459, 58.74956126
+                        ],
+                        markPoint: {
+                            data: [{
+                                name: '周最低',
+                                value: -2,
+                                xAxis: 1,
+                                yAxis: -1.5
+                            }]
+                        },
+                        markLine: {
+                            data: [{
+                                type: 'average',
+                                name: '平均值'
+                            }]
+                        }
+                    }
+                ]
+            };
+
+            myO2Chart.setOption(optionO2, true);
+        </script>
+        <div class="footer1_bg">
+            <!-- start footer1 -->
+            <div class="container">
+                <div class="footer1">
+                    <div class="copy pull-left">
+                        <p class="link">Designed By Ruijie Xi And Tingxuan Xie. Contact us
+                            <a target="_blank" href="about.html"></a>
+                        </p>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>

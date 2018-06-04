@@ -1,0 +1,188 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>并发污染物分析</title>
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<link href="css/blue.css" rel="stylesheet" type="text/css" media="all" />
+	<!----font-Awesome----->
+		<link rel="stylesheet" href="fonts/css/font-awesome.min.css">
+	<!----font-Awesome----->
+	<!-- start plugins -->
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<!-- Owl Carousel Assets -->
+	<link href="css/owl.carousel.css" rel="stylesheet">
+	<script src="js/owl.carousel.js"></script>
+			<script>
+				$(document).ready(function() {
+
+					$("#owl-demo").owlCarousel({
+						items : 4,
+						lazyLoad : true,
+						autoPlay : true,
+						navigation : true,
+						navigationText : ["", ""],
+						rewindNav : false,
+						scrollPerPage : false,
+						pagination : false,
+						paginationNumbers : false,
+					});
+
+				});
+			</script>
+			<!-- //Owl Carousel Assets -->
+	<!-- start circle -->
+	<script src="echarts-all.js"></script>>
+</head>
+<body>
+        <img class="fixed_background"></img>
+<div class="header_bg">
+	<div class="container">
+		<div class="header">
+			<div class="h_menu">
+				<a id="touch-menu" class="mobile-menu" href="#">目录 / Menu</a>
+                <nav>
+                    <ul class="menu list-unstyled">
+                            <div class="logo">
+                                    <a href="">
+                                        <img src="images/logo.png" alt="" style="width: 64px;"/>
+                                    </a>
+                                </div>
+                        <li><a href="index.html">主页 / Homepage</a></li>
+                        <li><a href="data.html">数据 / Data</a></li>
+                        <li>
+                            <a href="AQ_analysis.html">空气质量污染物分析 / Analysis</a>
+                            <ul class="sub-menu list-unstyled">
+                                <li><a href="AQI.html">空气污染指数AQI简介</a></li>
+                                <li><a href="concurrent_pollutants.html">并发污染物分析</a></li>
+                                <li><a href="primary_pollutant.html">首要污染物分析</a></li>
+                                <li><a href="peak_hours.html">污染物浓度高峰时段分析</a></li>
+                                <li><a href="peak_season.html">污染物浓度高峰季节分析</a></li>
+                                <li><a href="event_mining.html">污染物事件挖掘</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="AQ_pre.html">空气质量预测 / Prediction</a>
+                            <ul class="sub-menu list-unstyled">
+                                <li><a href="pre_relation.html">时序关系挖掘</a></li>
+                                <li><a href="pre_model.html">预测模型</a></li>
+                                <li><a href="pre_theory.html">预测理论依据</a></li>
+                                <li><a href="pre_end.html">预测结果应用</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="about.html">关于 / About</a></li>
+                    </ul>
+                </nav>
+			<script src="js/menu.js" type="text/javascript"></script>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+<div class="main_bg"><!-- start main -->
+<div>
+    <h1>并发污染物分析</h1>
+    </div><br/>
+    <div class="clearfix"></div>
+<div id="temper1main" style="width:1300px;height:400px;margin-left:auto;margin-right:auto;"></div>
+<script type="text/javascript">
+
+       
+            // 基于准备好的dom，初始化echarts实例
+            var mytemper1Chart = echarts.init(document.getElementById('temper1main'));
+            var option = {
+    title: {
+        text: '各污染物及AQI关联图'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['PM2.5 (ug/m3)','PM10(ug/m3)','O3(ug/m3)','AQI','NO2(ug/m3)']
+    },
+    grid: {
+        left: '1%',
+        right: '1%',
+        bottom: '3%',
+        containLabel: true
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['2017/4/1', '2017/4/2', '2017/4/3', '2017/4/4', '2017/4/5', '2017/4/6', '2017/4/7', '2017/4/8', '2017/4/9', '2017/4/10', '2017/4/11', '2017/4/12', '2017/4/13', '2017/4/14', '2017/4/15', '2017/4/16', '2017/4/17', '2017/4/18', '2017/4/19', '2017/4/20', '2017/4/21', '2017/4/22', '2017/4/23', '2017/4/24', '2017/4/25', '2017/4/26', '2017/4/27', '2017/4/28', '2017/4/29', '2017/4/30']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [
+        {
+            name:'PM2.5 (ug/m3)',
+            type:'line',
+            stack: '总量',
+            data:[40.5, 84.04166667, 118.4583333, 94.08333333, 63.41666667, 98.375, 85.33333333, 52.230134, 55.54166667, 60.83333333, 22.04166667, 34.125, 55.77211152, 32.78947368, 42.125, 126.2083333, 72.86956522, 26.95833333, 48.94736842, 28.83857899, 26.36363636, 50.85714286, 38, 21.30434783, 16.69565217, 14.54166667, 51.4268836, 29.00262283, 39.65625, 46.55]
+        },
+        {
+            name:'O3(ug/m3)',
+            type:'line',
+            stack: '总量',
+            data:[46.45833333, 48, 97.16666667, 72.5, 76.5, 91.625, 34.41666667, 31.40909091, 49.875, 48.04166667, 53.04166667, 56.125, 48.82352941, 57, 64.95833333, 46.70833333, 84.7826087, 59.41666667, 21.57894737, 68, 70.18181818, 95.28571429, 101, 90.65217391, 44.69565217, 61.79166667, 64.17391304, 60.33333333, 66.09375, 92.45]
+        },
+        {
+            name:'PM10(ug/m3)',
+            type:'line',
+            stack: '总量',
+            data:[100.7916667, 148.2083333, 158.4574558, 127.4131567, 82.98947012, 130.4557009, 155.4583333, 110.7272727, 102.2491225, 121.5833333, 89.375, 105.9149117, 145.1764706, 112.4199442, 127.6666667, 209.5416667, 215.0869565, 96.75, 155.5263158, 64.49649004, 82.45454545, 122.2142857, 76.98596016, 66.73913043, 62.86773393, 51.45833333, 89.38764178, 95.70833333, 121.5625, 195.35]
+        },
+        {
+            name:'AQI',
+            type:'line',
+            stack: '总量',
+            data:[86.77083333, 111.3020833, 154.9404762, 123.8541667, 85.52083333, 129.21875, 112.9166667, 80.36363636, 76.12456126, 85.79166667, 69.6875, 77.95745584, 97.58823529, 81.20997211, 88.83333333, 166.0119048, 132.5434783, 73.375, 102.7631579, 57.24824502, 66.22727273, 86.10714286, 63.49298008, 58.36956522, 56.95652174, 51.51041667, 70.53360449, 72.85416667, 85.78125, 122.675]
+        },
+        {
+            name:'NO2(ug/m3)',
+            type:'line',
+            stack: '总量',
+            data:[69.41666667, 88.75, 62.16666667, 46.83333333, 37.16666667, 44.75, 73.29166667, 47, 45.66666667, 50.125, 50.45833333, 56, 67.41176471, 51, 56.16666667, 77.04166667, 34.17391304, 48.83333333, 65.78947368, 45.16666667, 33.81818182, 28.85714286, 16.66666667, 18.82608696, 45.56521739, 41.20833333, 43.47826087, 51.5, 51.84375, 37.05]
+        }
+    ]
+};
+            mytemper1Chart.setOption(option, true); 
+</script>
+<div >
+	<div class="clearfix"></div>
+
+	<h6>如图是2017年4月大兴站点每天的各污染物浓度及当日AQI的关联图。我们可以看出每天各污染物浓度在一定程度上是相互关联的，一般会呈现出如果某一天的空气污染程度(用当天的AQI值衡量该天的污染程度)较为严重，则该天所有污染物的浓度都会较高，如果当天空气污染较轻则当天污染物浓度都较低。
+</h6>
+</div>
+<div class="clearfix"></div>
+    <div class="footer1_bg">
+        <!-- start footer1 -->
+        <div class="container">
+            <div class="footer1">
+                <div class="copy pull-left">
+                    <p class="link">Designed By Ruijie Xi And Tingxuan Xie. Contact us<a target="_blank" href="about.html"></a></p>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+	<script src="js/d3.js"></script>
+	<script src="js/esl.js"></script>
+	<script src="js/echarts-plain-map.js"></script>
+	<script src="js/feature/heat_p.js"></script>
+</body>
+</html>

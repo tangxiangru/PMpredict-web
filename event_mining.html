@@ -1,0 +1,455 @@
+﻿<!DOCTYPE html>
+<html style="height: 100%">
+
+<head>
+    <meta charset="utf-8">
+    <title>首要污染物分析</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript">
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <link href="css/blue.css" rel="stylesheet" type="text/css" media="all" />
+    <!----font-Awesome----->
+    <link rel="stylesheet" href="fonts/css/font-awesome.min.css">
+    <!----font-Awesome----->
+    <!-- start plugins -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- Owl Carousel Assets -->
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <script src="js/owl.carousel.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#owl-demo").owlCarousel({
+                items: 4,
+                lazyLoad: true,
+                autoPlay: true,
+                navigation: true,
+                navigationText: ["", ""],
+                rewindNav: false,
+                scrollPerPage: false,
+                pagination: false,
+                paginationNumbers: false,
+            });
+
+        });
+    </script>
+    <!-- //Owl Carousel Assets -->
+    <!-- start circle -->
+    <script src="echarts-all.js"></script>>
+</head>
+
+<body style="height: 100%; margin: 0">
+    <div class="header_bg">
+        <div class="container">
+            <div class="header">
+                <div class="h_menu">
+                    <a id="touch-menu" class="mobile-menu" href="#">目录 / Menu</a>
+                    <nav>
+                        <ul class="menu list-unstyled">
+                                <div class="logo">
+                                        <a href="">
+                                            <img src="images/logo.png" alt="" style="width: 64px;"/>
+                                        </a>
+                                    </div>
+                            <li>
+                                <a href="index.html">主页 / Homepage</a>
+                            </li>
+                            <li>
+                                <a href="data.html">数据 / Data</a>
+                            </li>
+                            <li>
+                                <a href="AQ_analysis.html">空气质量污染物分析 / Analysis</a>
+                                <ul class="sub-menu list-unstyled">
+                                    <li>
+                                        <a href="AQI.html">空气污染指数AQI简介</a>
+                                    </li>
+                                    <li>
+                                        <a href="concurrent_pollutants.html">并发污染物分析</a>
+                                    </li>
+                                    <li>
+                                        <a href="primary_pollutant.html">首要污染物分析</a>
+                                    </li>
+                                    <li>
+                                        <a href="peak_hours.html">污染物浓度高峰时段分析</a>
+                                    </li>
+                                    <li>
+                                        <a href="peak_season.html">污染物浓度高峰季节分析</a>
+                                    </li>
+                                    <li>
+                                        <a href="event_mining.html">污染物事件挖掘</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="AQ_pre.html">空气质量预测 / Prediction</a>
+                                <ul class="sub-menu list-unstyled">
+                                    <li>
+                                        <a href="pre_relation.html">时序关系挖掘</a>
+                                    </li>
+                                    <li>
+                                        <a href="pre_model.html">预测模型</a>
+                                    </li>
+                                    <li>
+                                        <a href="pre_theory.html">预测理论依据</a>
+                                    </li>
+                                    <li>
+                                        <a href="pre_end.html">预测结果应用</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="about.html">关于 / About</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <script src="js/menu.js" type="text/javascript"></script>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <h1>污染物时间挖掘</h1>
+    <div id="container" style="height: 100%"></div>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+    <script type="text/javascript">
+        var dom = document.getElementById("container");
+        var myChart = echarts.init(dom);
+        var app = {};
+        option = null;
+
+        var hours = ["2017/4/1", "2017/4/2", "2017/4/3", "2017/4/4", "2017/4/5", "2017/4/6", "2017/4/7", "2017/4/8",
+            "2017/4/9", "2017/4/10", "2017/4/11", "2017/4/12", "2017/4/13", "2017/4/14", "2017/4/15", "2017/4/16",
+            "2017/4/17", "2017/4/18", "2017/4/19", "2017/4/20", "2017/4/21", "2017/4/22", "2017/4/23", "2017/4/24",
+            "2017/4/25", "2017/4/26", "2017/4/27", "2017/4/28", "2017/4/29", "2017/4/30"
+        ];
+        var days = ['顺义', '怀柔', '大兴', '房山', ' 门头沟', '密云', '平昌'];
+
+        var data = [
+            [0, 0, 38.70833333],
+            [0, 1, 64.45833333],
+            [0, 2, 125.4583333],
+            [0, 3, 128.3043478],
+            [0, 4, 78.54166667],
+            [0, 5, 65.23809524],
+            [0, 6, 89.66666667],
+            [0, 7, 28.70833333],
+            [0, 8, 53.79166667],
+            [0, 9, 58.75],
+            [0, 10, 6.304347826],
+            [0, 11, 29.95833333],
+            [0, 12, 64.66666667],
+            [0, 13, 40.64705882],
+            [0, 14, 31.25],
+            [0, 15, 106.125],
+            [0, 16, 77.33333333],
+            [0, 17, 22.625],
+            [0, 18, 42.47368421],
+            [0, 19, 33.36363636],
+            [0, 20, 15.54545455],
+            [0, 21, 35.42857143],
+            [0, 22, 12.66666667],
+            [0, 23, 10.6],
+            [0, 24, 9.666666667],
+            [0, 25, 8.583333333],
+            [0, 26, 14.625],
+            [0, 27, 27],
+            [0, 28, 39.625],
+            [0, 29, 46.89473684],
+            [1, 0, 37.58333333],
+            [1, 1, 75.04166667],
+            [1, 2, 124.7083333],
+            [1, 3, 105.2083333],
+            [1, 4, 69.91666667],
+            [1, 5, 67.04347826],
+            [1, 6, 92.83333333],
+            [1, 7, 50.95833333],
+            [1, 8, 51.58333333],
+            [1, 9, 60],
+            [1, 10, 13.34782609],
+            [1, 11, 26.41666667],
+            [1, 12, 68.625],
+            [1, 13, 39.71428571],
+            [1, 14, 31.75],
+            [1, 15, 105.6666667],
+            [1, 16, 79.26086957],
+            [1, 17, 18.25],
+            [1, 18, 48.10526316],
+            [1, 19, 16.91666667],
+            [1, 20, 19.72727273],
+            [1, 21, 35.07142857],
+            [1, 22, 9.666666667],
+            [1, 23, 9.622045138],
+            [1, 24, 15],
+            [1, 25, 11.17391304],
+            [1, 26, 15.58333333],
+            [1, 27, 22.79166667],
+            [1, 28, 38.0625],
+            [1, 29, 40.75],
+            [2, 0, 40.5],
+            [2, 1, 84.04166667],
+            [2, 2, 118.4583333],
+            [2, 3, 94.08333333],
+            [2, 4, 63.41666667],
+            [2, 5, 98.375],
+            [2, 6, 85.33333333],
+            [2, 7, 52.230134],
+            [2, 8, 55.54166667],
+            [2, 9, 60.83333333],
+            [2, 10, 22.04166667],
+            [2, 11, 34.125],
+            [2, 12, 55.77211152],
+            [2, 13, 32.78947368],
+            [2, 14, 42.125],
+            [2, 15, 126.2083333],
+            [2, 16, 72.86956522],
+            [2, 17, 26.95833333],
+            [2, 18, 48.94736842],
+            [2, 19, 28.83857899],
+            [2, 20, 26.36363636],
+            [2, 21, 50.85714286],
+            [2, 22, 38],
+            [2, 23, 21.30434783],
+            [2, 24, 16.69565217],
+            [2, 25, 14.54166667],
+            [2, 26, 51.4268836],
+            [2, 27, 29.00262283],
+            [2, 28, 39.65625],
+            [2, 29, 46.55],
+            [3, 0, 76.35416667],
+            [3, 1, 105.5833333],
+            [3, 2, 141.1458333],
+            [3, 3, 105.923913],
+            [3, 4, 76.45833333],
+            [3, 5, 137.7604167],
+            [3, 6, 113.625],
+            [3, 7, 91.51041667],
+            [3, 8, 82.1875],
+            [3, 9, 81.97872792],
+            [3, 10, 57.04166667],
+            [3, 11, 85.10372792],
+            [3, 12, 114.3631577],
+            [3, 13, 91.9375],
+            [3, 14, 97.52039459],
+            [3, 15, 157.3214286],
+            [3, 16, 127.5407892],
+            [3, 17, 72.79166667],
+            [3, 18, 97.96052632],
+            [3, 19, 66.41666667],
+            [3, 20, 70.13636364],
+            [3, 21, 101],
+            [3, 22, 49],
+            [3, 23, 58.97518763],
+            [3, 24, 55.76995584],
+            [3, 25, 49.70833333],
+            [3, 26, 60.91666667],
+            [3, 27, 74.39583333],
+            [3, 28, 93.24934188],
+            [3, 29, 120.425],
+            [4, 0, 90.60372792],
+            [4, 1, 98.90625],
+            [4, 2, 178.1547619],
+            [4, 3, 145.3645833],
+            [4, 4, 96.97916667],
+            [4, 5, 157.5324675],
+            [4, 6, 130.3571429],
+            [4, 7, 129.1666667],
+            [4, 8, 106.71875],
+            [4, 9, 93.20833333],
+            [4, 10, 63.375],
+            [4, 11, 90.60416667],
+            [4, 12, 100.2291667],
+            [4, 13, 85.64285714],
+            [4, 14, 75.77083333],
+            [4, 15, 194.8214286],
+            [4, 16, 170.3571429],
+            [4, 17, 74.66666667],
+            [4, 18, 95.65789474],
+            [4, 19, 61.87412251],
+            [4, 20, 71.63540637],
+            [4, 21, 105.1071429],
+            [4, 22, 51],
+            [4, 23, 60.39038871],
+            [4, 24, 50.89495584],
+            [4, 25, 40.16666667],
+            [4, 26, 60.60778001],
+            [4, 27, 57.79166667],
+            [4, 28, 70.77419355],
+            [4, 29, 124.8244735],
+            [5, 0, 76.25],
+            [5, 1, 81.45833333],
+            [5, 2, 172.9166667],
+            [5, 3, 157.3809524],
+            [5, 4, 110.625],
+            [5, 5, 97.04108561],
+            [5, 6, 113.59375],
+            [5, 7, 67.35416667],
+            [5, 8, 80],
+            [5, 9, 88.80208333],
+            [5, 10, 54.8125],
+            [5, 11, 78.75],
+            [5, 12, 98.72916667],
+            [5, 13, 76.875],
+            [5, 14, 77.5],
+            [5, 15, 126.8229167],
+            [5, 16, 109.6666667],
+            [5, 17, 56.33283191],
+            [5, 18, 81.34210526],
+            [5, 19, 52.33245584],
+            [5, 20, 58.31722456],
+            [5, 21, 82.39285714],
+            [5, 22, 17],
+            [5, 23, 50.84691045],
+            [5, 24, 53.85241169],
+            [5, 25, 54.79035043],
+            [5, 26, 71.89407835],
+            [5, 27, 64.9375],
+            [5, 28, 80.046875],
+            [5, 29, 108.5375],
+            [6, 0, 70.04166667],
+            [6, 1, 101.9270833],
+            [6, 2, 174.3452381],
+            [6, 3, 205.5],
+            [6, 4, 101.40625],
+            [6, 5, 126.6847826],
+            [6, 6, 115.5208333],
+            [6, 7, 86.93662251],
+            [6, 8, 84.89583333],
+            [6, 9, 75.10328918],
+            [6, 10, 45.04078918],
+            [6, 11, 71.14583333],
+            [6, 12, 97.70833333],
+            [6, 13, 77.06521739],
+            [6, 14, 61.72872792],
+            [6, 15, 154.5833333],
+            [6, 16, 110.4791667],
+            [6, 17, 70.24912251],
+            [6, 18, 79.92105263],
+            [6, 19, 57.54166667],
+            [6, 20, 51.63349185],
+            [6, 21, 78.60714286],
+            [6, 22, 59.83333333],
+            [6, 23, 57.93478261],
+            [6, 24, 38.99824502],
+            [6, 25, 38.91578918],
+            [6, 26, 51.94894701],
+            [6, 27, 60.40909091],
+            [6, 28, 72.84342094],
+            [6, 29, 114.1710526]
+        ];
+
+
+        option = {
+            tooltip: {},
+            visualMap: {
+                max: 100,
+                inRange: {
+                    color: ['#313695', '#4575b4', '#74add1', '#abd9e9', '#e0f3f8', '#ffffbf', '#fee090', '#fdae61',
+                        '#f46d43', '#d73027', '#a50026'
+                    ]
+                }
+            },
+            xAxis3D: {
+                type: 'category',
+                data: hours
+            },
+            yAxis3D: {
+                type: 'category',
+                data: days
+            },
+            zAxis3D: {
+                type: 'value'
+            },
+            grid3D: {
+                boxWidth: 200,
+                boxDepth: 80,
+                viewControl: {
+                    // projection: 'orthographic'
+                },
+                light: {
+                    main: {
+                        intensity: 1.2,
+                        shadow: true
+                    },
+                    ambient: {
+                        intensity: 0.3
+                    }
+                }
+            },
+            series: [{
+                type: 'bar3D',
+                data: data.map(function (item) {
+                    return {
+                        value: [item[1], item[0], item[2]],
+                    }
+                }),
+                shading: 'lambert',
+
+                label: {
+                    textStyle: {
+                        fontSize: 16,
+                        borderWidth: 1
+                    }
+                },
+
+                emphasis: {
+                    label: {
+                        textStyle: {
+                            fontSize: 20,
+                            color: '#900'
+                        }
+                    },
+                    itemStyle: {
+                        color: '#900'
+                    }
+                }
+            }]
+        };
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+    </script>
+
+    <div>
+        <div class="clearfix"></div>
+
+        <h6>
+            本图可清楚地展示出北京7个站点4月份各天AQI的指数增长幅度，通过幅度我们可以大致判断出哪一天存在污染事件。例如4月16日北京的7个站点均出现空气污染严重的情况，4月30日门头沟、密云、平昌三个站点可能有污染事件发生，该图能在一定程度上说明该天全市范围内可能有污染事件发生，可以警示相关部门及时对污染源头进行调查，进而采取有效的防治措施。
+        </h6>
+    </div>
+    <div class="footer1_bg">
+        <!-- start footer1 -->
+        <div class="container">
+            <div class="footer1">
+                <div class="copy pull-left">
+                    <p class="link">Designed By Ruijie Xi And Tingxuan Xie. Contact us
+                        <a target="_blank" href="about.html"></a>
+                    </p>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

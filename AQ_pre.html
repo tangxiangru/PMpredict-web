@@ -1,0 +1,302 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>空气质量预测 | Prediction</title>
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<link href="css/blue.css" rel="stylesheet" type="text/css" media="all" />
+	<!----font-Awesome----->
+		<link rel="stylesheet" href="fonts/css/font-awesome.min.css">
+	<!----font-Awesome----->
+	<!-- start plugins -->
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<!--start slider -->
+		<link rel="stylesheet" href="css/fwslider.css" media="all">
+		<script src="js/jquery-ui.min.js"></script>
+		<script src="js/css3-mediaqueries.js"></script>
+		<script src="js/fwslider.js"></script>
+	<!--end slider -->
+	<!-- must have -->
+	<link href="css/allinone_carousel.css" rel="stylesheet" type="text/css">
+	<script src="js/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
+	<script src="js/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
+	<script src="js/allinone_carousel.js" type="text/javascript"></script>
+	<!--[if IE]><script src="js/excanvas.compiled.js" type="text/javascript"></script>
+	<![endif]-->
+	<!-- must have -->
+		<script>
+			jQuery(function() {
+
+				jQuery('#allinone_carousel_charming').allinone_carousel({
+					skin: 'charming',
+					width: 990,
+					height: 454,
+					responsive:true,
+					autoPlay: 3,
+					resizeImages:true,
+					autoHideBottomNav:false,
+					showElementTitle:false,
+					verticalAdjustment:50,
+					showPreviewThumbs:false,
+					//easing:'easeOutBounce',
+					numberOfVisibleItems:5,
+					nextPrevMarginTop:23,
+					playMovieMarginTop:0,
+					bottomNavMarginBottom:-10
+				});		
+			});
+		</script>
+	<!-- Owl Carousel Assets -->
+	<link href="css/owl.carousel.css" rel="stylesheet">
+	<script src="js/owl.carousel.js"></script>
+			<script>
+				$(document).ready(function() {
+
+					$("#owl-demo").owlCarousel({
+						items : 4,
+						lazyLoad : true,
+						autoPlay : true,
+						navigation : true,
+						navigationText : ["", ""],
+						rewindNav : false,
+						scrollPerPage : false,
+						pagination : false,
+						paginationNumbers : false,
+					});
+
+				});
+			</script>
+			<!-- //Owl Carousel Assets -->
+	<!-- start circle -->
+	<script>
+	(function($){
+		$.fn.percentPie = function(options){
+
+			var settings = $.extend({
+				width: 100,
+				trackColor: "EEEEEE",
+				barColor: "E2534B",
+				barWeight: 30,
+				startPercent: 0,
+				endPercent: 1,
+				fps: 60
+			}, options);
+
+			this.css({
+				width: settings.width,
+				height: settings.width
+			});
+
+			var	that = this,
+				hoverPolice = false,
+				canvasWidth = settings.width,
+				canvasHeight = canvasWidth,
+				id = $('canvas').length,
+				canvasElement = $('<canvas id="'+ id +'" width="' + canvasWidth + '" height="' + canvasHeight + '"></canvas>'),
+				canvas = canvasElement.get(0).getContext("2d"),
+				centerX = canvasWidth/2,
+				centerY = canvasHeight/2,
+				radius = settings.width/2 - settings.barWeight/2;
+				counterClockwise = false,
+				fps = 1000 / settings.fps,
+				update = .01;
+				this.angle = settings.startPercent;
+
+			this.drawArc = function(startAngle, percentFilled, color){
+				var drawingArc = true;
+				canvas.beginPath();
+				canvas.arc(centerX, centerY, radius, (Math.PI/180)*(startAngle * 360 - 90), (Math.PI/180)*(percentFilled * 360 - 90), counterClockwise);
+				canvas.strokeStyle = color;
+				canvas.lineWidth = settings.barWeight;
+				canvas.stroke();
+				drawingArc = false;
+			}
+
+			this.fillChart = function(stop){
+				var loop = setInterval(function(){
+					hoverPolice = true;
+					canvas.clearRect(0, 0, canvasWidth, canvasHeight);
+
+					that.drawArc(0, 360, settings.trackColor);
+					that.angle += update;
+					that.drawArc(settings.startPercent, that.angle, settings.barColor);
+
+					if(that.angle > stop){
+						clearInterval(loop);
+						hoverPolice = false;
+					}
+				}, fps);
+			}
+
+			this.mouseover(function(){
+				if(hoverPolice == false){
+					that.angle = settings.startPercent;
+					that.fillChart(settings.endPercent);
+				}
+			});
+
+			this.fillChart(settings.endPercent);
+			this.append(canvasElement);
+			return this;
+		}
+	}(jQuery));
+
+	//the percent of bar-show
+	$(document).ready(function() {
+
+		$('.google').percentPie({
+			width: 100,
+			trackColor: "E2534B",
+			barColor: "76C7C0",
+			barWeight: 20,
+			endPercent: .9,
+			fps: 60
+		});
+	  
+	  $('.moz').percentPie({
+			width: 100,
+			trackColor: "E2534B",
+			barColor: "76C7C0",
+			barWeight: 20,
+			endPercent: .75,
+			fps: 60
+		});
+	  
+	  $('.safari').percentPie({
+			width: 100,
+			trackColor: "E2534B",
+			barColor: "#76C7C0",
+			barWeight: 20,
+			endPercent: .5,
+			fps: 60
+		});
+		
+	});
+	</script>
+</head>
+<body>
+<div class="header_bg">
+	<div class="container">
+		<div class="header">
+            <div class="h_menu">
+                <a id="touch-menu" class="mobile-menu" href="#">目录 / Menu</a>
+                <nav>
+                    <ul class="menu list-unstyled">
+							<div class="logo">
+									<a href="">
+										<img src="images/logo.png" alt="" style="width: 64px;"/>
+									</a>
+								</div>
+                        <li><a href="index.html">主页 / Homepage</a></li>
+                        <li><a href="data.html">数据 / Data</a></li>
+                        <li>
+                            <a href="AQ_analysis.html">空气质量污染物分析 / Analysis</a>
+                            <ul class="sub-menu list-unstyled">
+                                <li><a href="AQI.html">空气污染指数AQI简介</a></li>
+                                <li><a href="concurrent_pollutants.html">并发污染物分析</a></li>
+                                <li><a href="primary_pollutant.html">首要污染物分析</a></li>
+                                <li><a href="peak_hours.html">污染物浓度高峰时段分析</a></li>
+                                <li><a href="peak_season.html">污染物浓度高峰季节分析</a></li>
+                                <li><a href="event_mining.html">污染物事件挖掘</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="AQ_pre.html">空气质量预测 / Prediction</a>
+                            <ul class="sub-menu list-unstyled">
+                                <li><a href="pre_relation.html">时序关系挖掘</a></li>
+                                <li><a href="pre_model.html">预测模型</a></li>
+                                <li><a href="pre_theory.html">预测理论依据</a></li>
+                                <li><a href="pre_end.html">预测结果应用</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="about.html">关于 / About</a></li>
+                    </ul>
+                </nav>
+                <script src="js/menu.js" type="text/javascript"></script>
+            </div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+
+
+<!--/slider -->
+
+
+    <div class="index section fp-section active fp-table fp-completely" id="index" style="height: 768px;" data-anchor="firstPage">
+        <div class="fp-tableCell" style="height: 768px;">
+            <div class="scrollblock">
+
+
+            </div>
+            <!-- <ul class="index_banner_btn">
+                <li class="index_banner_cur"><p></p></li>
+                <li><p></p></li>
+            </ul> -->
+            <div class="index_banner_content">
+                <div class="index_banner_video">
+                    <div class="index_bg"><video style="position: absolute; left: 50%; margin-left: -699.5px; object-fit: fill;" loop="loop" autoplay="autoplay" muted="muted" width="1399" height="762"><source src="http://cdn.moji.com/websrc/video/video2018summer.mp4" type="video/mp4"></video></div>
+                    <div class="index_info">
+                        <div class="index_text"><img src="images/head1.png"></div>
+                        <div class="index_download_btn">
+                            <div class="index_iphone clearfix">
+                                <a href="http://mojichina.com/mjchann/channel.php?url=http://itunes.apple.com/cn/app/mo-ji-tian-qi-guan-fang/id434209233?mt=8&amp;channelid=9001&amp;userid=">
+                                    <i><img src="/templets/mojichina/img/icon/index_23.png"></i>
+
+                                </a>
+                            </div>
+                            <div class="index_android clearfix">
+                                <a href="http://www.moji.com/android_down.php">
+                                    <i><img src="/templets/mojichina/img/icon/index_26.png"></i>
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="index_banner_pic">
+                    <div class="air_box">
+                        <div class="air_text">
+                            <a href="http://item.jd.com/2537619.html">
+                                <img src="/templets/mojichina/img/index/air_text_0725.png" alt="空气果">
+                            </a>
+                        </div>
+                        <div class="airnut">
+                            <img src="/templets/mojichina/img/index/air_1s_0725.png" alt="空气果">
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-title" id="st-api" style="">
+                        <h2 id="api-title">空气质量预测</h2>
+                        <h7 id="api-title">基于机器学习的空气质量分析与预测系统</h7>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 14px">
+            </div>
+        </div>
+    </div>
+    <div class="footer1_bg">
+        <!-- start footer1 -->
+        <div class="container">
+            <div class="footer1">
+                <div class="copy pull-left">
+                    <p class="link">Designed By Ruijie Xi And Tingxuan Xie. Contact us<a target="_blank" href="about.html"></a></p>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
