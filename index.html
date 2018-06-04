@@ -322,7 +322,7 @@
 				<div class="col-lg-12 text-center">
 					<div class="section-title" id="st-api" style="">
 						<h2 id="api-title">关心空气，更关心你</h2>
-						<h7 id="api-title">基于机器学习的空气质量分析与预测系统</h7>
+						<h7 id="api-title">--基于机器学习的空气质量分析与预测系统</h7>
 					</div>
 				</div>
 			</div>
@@ -431,21 +431,18 @@
 	</div>
 
 
-	<div class="main1_bg">
-		<!-- start main1 -->
-		<div class="container">
-			<div class="main slider_text texxt-center">
-				<h4>基于机器学习的空气质量分析与预测系统</h4>
-				<div class="clearfix"></div>
-			</div>
-		</div>
-	</div>
 	<div class="main_btm">
+			<div class="container">
+					<div class="main slider_text texxt-center">
+						<h4>基于机器学习的空气质量分析与预测系统</h4>
+						<div class="clearfix"></div>
+					</div>
+				</div>
 		<!-- start main_btm -->
 		<div class="container">
 			<div class="main span_of_3">
 				<div class="col-md-3 span1_of_3">
-					<h4>我们解决了哪些问题?</h4>
+					<h4>系统解决了哪些问题?</h4>
 					<ul class="list-unstyled nav_list">
 						<li>
 							<a href="data.html">获取数据</a>
@@ -483,38 +480,29 @@
 						<li>
 							<a href="AQ_pre.html">提供人性化的生活服务，辅助决策</a>
 						</li>
+									<!-- start circle -->
+									<ul class="list-unstyled circle_list">
+											<li>
+												<div class="safari chart">
+													<img src="images/feature1.png" style="float:left"/>
+													
+												</div>
+											</li>
+									
+										</ul>
+										<!-- end circle -->
 					</ul>
+
 				</div>
 				<div class="col-md-6 span1_of_3">
-					<h4>项目简介</h4>
-					<p>本项目是在数据库系统概论实验课程的背景下展开的。项目所需数据来源于KDD CUP 2018的Fresh Air竞赛，其中包括北京、伦敦等大城市主要空气监测站在2017年1月~2018年1月期间的天气气象数据和空气质量数据，我们对数据进行了预处理，将缺失值用平均值填写。
-						本项目对北京2017年1月~2018年1月天气空气数据库的建立，其中需要存储相关的基本表，如天气气象小时数据表(MEOhour)，空气质量小时数据表(AQhour)，污染物每日平均浓度与当日AQI表(AQday)，各个表的主码是监测站ID和时间（或日期）。天气气象数据日均值表，(视图)
-						将天气气象小时数据表与空气质量小时数据表自然连接，我们发现在北京的35个监测站中有9个站点的天气、空气质量数据是完整的。基于9个站点的完整数据，我们设计了预测PM2.5、PM10、O3三大污染物浓度的算法。最终，我们对数据进行分析并以可视化的形式展示出来。
-					</p>
+					<h4>项目简介：</h4>
+					<p>本项目是在数据库系统概论实验课程的过程中开展的，由何婷婷老师和张淼学长共同指导。项目所需数据来源于KDD CUP 2018的Fresh Air竞赛，其中包括北京、伦敦等大城市35个空气监测站在2017年1月~2018年1月期间所采集的天气气象数据和空气质量数据。对于缺失值数据，如果连续缺失少于三个则线性填补，否则用预训练模型来预测填充，并采用一天的滑动窗口来增加数据。</p><p>本项目对北京2017年1月~2018年1月的天气和空气质量数据来建立数据库，需要存储相关的四个基本表：天气气象小时数据表(MEOhour)，空气质量小时数据表(AQhour)，污染物每日平均浓度与当日AQI表(AQday)，各个表的主码是监测站ID和时间（或日期）。我们将天气气象小时数据表与空气质量小时数据表自然连接，发现在北京的35个监测站中有9个站点的天气、空气质量数据是完整的。所以基于这9个站点的完整数据，我们设计了来预测未来PM2.5、PM10、O3这三大污染物浓度的算法。最终，我们对数据进行分析并以可视化的形式展示出来。</p>
+					
 
-					<!-- start circle -->
-					<ul class="list-unstyled circle_list">
-						<li>
-							<div class="safari chart">
-								<img src="images/feature1.png">
-							</div>
-						</li>
-						<li>
-							<div class="moz chart">
-								<img src="images/feature3.png">
-							</div>
-						</li>
-						<li>
-							<div class="google">
-								<img src="images/feature4.png">
-							</div>
-
-						</li>
-					</ul>
-					<!-- end circle -->
+	
 				</div>
 				<div class="col-md-3 span1_of_3">
-					<h4>我们具有哪些功能?</h4>
+					<h4>系统数据可视化的多样性</h4>
 
 					<p>条形图折线图</p>
 					<p>散点图</p>
@@ -528,9 +516,18 @@
 					<div class="clearfix"></div>
 					<div class="clearfix"></div>
 					<div class="clearfix"></div>
-
+					<ul class="list-unstyled circle_list">
+							<li>
+								<div class="safari chart">
+									<img src="images/feature3.png" style="float:left"/>
+									
+								</div>
+							</li>
+					
+						</ul>
 
 				</div>
+
 
 			</div>
 			<div class="ds-thread" data-thread-key="" data-title="融合社交网络数据挖掘的综艺节目可视化评价系统" data-url="https://hijiangtao.github.io"></div>
@@ -552,12 +549,14 @@
 		</div>
 	</div>
 
+
+
 	<div class="footer1_bg">
 		<!-- start footer1 -->
 		<div class="container">
 			<div class="footer1">
 				<div class="copy pull-left">
-					<p class="link">Designed By Ruijie Xi And Tingxuan Xie. Contact us
+					<p class="link">By Ruijie Xi, Tingxuan Xie, Xiangru Tang. Contact us
 						<a target="_blank" href="about.html"></a>
 					</p>
 				</div>

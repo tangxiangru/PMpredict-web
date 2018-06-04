@@ -133,7 +133,7 @@
                             <i class="fa fa-flag"></i>
                         </span>
                         <h3>我们选择了什么数据？</h3>
-                        <p>项目所需数据来源于KDD CUP 2018的Fresh Air竞赛，其中包括北京、伦敦等大城市主要空气监测站在2017年~2018年3月期间的天气气象数据和空气质量数据，我们对数据进行了预处理，将缺失值用平均值填写。</p>
+                        <p>项目所需数据来源于KDD CUP 2018的Fresh Air竞赛，其中包括北京、伦敦等大城市35个空气监测站在2017年1月~2018年1月期间所采集的天气气象数据和空气质量数据。对于缺失值数据，如果连续缺失少于三个则线性填补，否则用预训练模型来预测填充，并采用一天的滑动窗口来增加数据。</p>
                         <img src="images/KDDCUP.png" alt="" class="img-responsive" />
                         <!-- <div class="read_more">
 						<a class="btn  btn-2b" href="single-page.html">view more</a>
@@ -146,7 +146,8 @@
                             <i class="fa fa-flag"></i>
                         </span>
                         <h3>我们对数据怎么挖掘？</h3>
-                        <p>在数据挖掘方面，我们将 BP 神经网络应用于空气质量的预测中,BP 网是具有三层及以上的多层神经元网络的一种,它实现了左、右各层之间的各个神经元的全连接，能随着不断地进行误差逆传播训练,网络对输入模式响应的正确率也不断的得到提高。</p>
+                        <p>在对于空气污染预测的数据挖掘方面，我们采用基于树的集成boosting回归模型作为主体模型。具体实现上使用了在模型的训练速度和内存方面都有相应的优化的LightGBM算法，以及会先随机收集一部分特征，然后再利用信息熵/基尼指数挑选最佳的节点特征的极端随机森林Extra Tree Regression模型。</p>
+         
                         <img src="images/XGBoost.png" alt="" class="img-responsive" />
                         <!-- <div class="read_more">
 						<a class="btn btn-2b" href="single-page.html">view more</a>
@@ -159,7 +160,12 @@
                             <i class="fa fa-flag"></i>
                         </span>
                         <h3>我们如何可视化？</h3>
-                        <p>利用数据库的统计结果，我们使用Echarts，将统计的数据导入之后，使用Echarts图展示出来。我们实现了散点图、条形图、折线图、扇形图、3D柱状图等多种图表格式，将各种数据间的联系以清晰的方式展现出来。</p>
+                        <p>利用数据库存储过程来查询得到的结果，我们将统计的数据导入之后，使用Echarts图可视化展示数据。并且，我们实现了散点图、条形图、折线图、扇形图、3D柱状图等多种图表格式，将各种数据间的联系以极高的多样性的方式展现出来。         
+                                <br><br>
+                                <br><br>
+                                <br><br>
+                                <br><br>
+                             </p>
                         <img src="images/echarts.png" alt="" class="img-responsive" />
                         <!-- <div class="read_more">
 						<a class="btn btn-2b" href="single-page.html">view more</a>
@@ -8644,7 +8650,7 @@
         <div class="container">
             <div class="footer1">
                 <div class="copy pull-left">
-                    <p class="link">Designed By Ruijie Xi And Tingxuan Xie. Contact us
+                    <p class="link">By Ruijie Xi, Tingxuan Xie, Xiangru Tang. Contact us
                         <a target="_blank" href="about.html"></a>
                     </p>
                 </div>
