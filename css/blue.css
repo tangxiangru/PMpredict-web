@@ -11,7 +11,7 @@
 body {
 	font-family:'Times New Roman', '微软雅黑';
     /*font-family: 'roboto_condensedregular';*/
-	background:#ffffff;
+	background: url(../images/background.jpg);
 	font-size: 190%;
 }
 .header_bg {
@@ -142,7 +142,7 @@ nav{margin:0;background:none;}.menu li{display:block;margin:0;}.menu li a{backgr
 
 /* start mian */
 .main_bg{
-	background: #ffffff;
+	background: url(../images/background.jpg);
 	
 }
 .main_grid{
@@ -640,7 +640,7 @@ h3.style{
 }
 /* start services */
 .main_btm1{
-	background: #ffffff;
+	background: url(../images/background.jpg);
 }
 .main_btm2{
 	background: #f0f0f0;
